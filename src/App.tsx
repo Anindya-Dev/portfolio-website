@@ -173,7 +173,7 @@ function App() {
               <p className="text-gray-300 text-lg">
               I'm an AI & ML enthusiast passionate about automation in financial markets.
               I focus on AI-driven trading strategies, predictive models, and quantitative finance,
-              leveraging data and automation to optimize financial decision-making."
+              leveraging data and automation to optimize financial decision-making.
               </p>
               <div className="flex space-x-4">
                 <User size={24} className="text-gray-400" />

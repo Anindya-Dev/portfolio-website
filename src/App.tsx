@@ -128,19 +128,19 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="mb-8 animate-on-scroll">
             <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80"
+              src="/src/assets/IMG-20240922-WA0232.jpg"
               alt="Profile"
               className="w-32 h-32 rounded-full mx-auto border-2 border-white/20"
             />
           </div>
           <h1 className="text-5xl md:text-7xl font-light mb-6 gradient-text animate-on-scroll">
-            Creative Developer
+            AI & ML Enthusiast | Software Developer
           </h1>
           <h2 className="text-3xl md:text-4xl font-light mb-8 text-white/80 animate-on-scroll delay-100">
-            That's Anindya Bhattacharya
+             Anindya Bhattacharya
           </h2>
           <p className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto animate-on-scroll delay-200">
-            Crafting digital experiences with code and creativity
+              Exploring the intersection of AI, software development, and finance.
           </p>
           <div className="mt-8 animate-on-scroll delay-300">
             <a 

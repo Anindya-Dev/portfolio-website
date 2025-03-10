@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin, Mail, ExternalLink, Code, Briefcase, User, Download, Award, BookOpen, Facebook, Twitter } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Mail, ExternalLink, Code, Briefcase, User, Download, Award,  Facebook, Twitter } from 'lucide-react';
 import profileImage from './assets/IMG-20240922-WA0232.jpg';
 
 function App() {
@@ -67,19 +67,21 @@ function App() {
     { name: 'TypeScript', level: 85 },
     { name: 'Node.js', level: 80 },
     { name: 'Python', level: 75 },
-    { name: 'AI/ML', level: 70 }
+    { name: 'C Programming', level: 70 },
+    { name: 'DSA', level: 65 },
+    { name: 'Prompt Engineering', level: 60 },
   ];
 
   const achievements = [
     {
-      title: 'AWS Certified Developer',
-      date: '2023',
+      title: 'Introduction to Generative AI- Art of the possible',
+      date: '2025',
       icon: Award
     },
     {
-      title: 'Published Research Paper',
-      date: '2022',
-      icon: BookOpen
+      title: 'Introduction to Prompt Engineering for GEN AI',
+      date: '2025',
+      icon: Award
     }
   ];
 

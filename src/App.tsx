@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin, Mail, ExternalLink, Code, Briefcase, User, Download, Award, BookOpen } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Mail, ExternalLink, Code, Briefcase, User, Download, Award, BookOpen, Facebook, Twitter } from 'lucide-react';
 import profileImage from './assets/IMG-20240922-WA0232.jpg';
 
 function App() {
@@ -168,9 +168,9 @@ function App() {
             </div>
             <div className="space-y-6 animate-on-scroll delay-200">
               <p className="text-gray-300 text-lg">
-                I'm a passionate developer focused on creating beautiful and functional web experiences. 
-                With expertise in modern web technologies, I bring ideas to life through clean code and 
-                thoughtful design.
+              I'm an AI & ML enthusiast passionate about automation in financial markets.
+              I focus on AI-driven trading strategies, predictive models, and quantitative finance,
+              leveraging data and automation to optimize financial decision-making."
               </p>
               <div className="flex space-x-4">
                 <User size={24} className="text-gray-400" />
@@ -280,13 +280,19 @@ function App() {
             Interested in working together? Let's connect and discuss your next project.
           </p>
           <div className="flex justify-center space-x-6 animate-on-scroll delay-400">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
+            <a href="https://github.com/Anindya-Dev" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
               <Github size={24} />
             </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
+            <a href="https://www.linkedin.com/in/anindya-bhattacharya-83b68a254/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
               <Linkedin size={24} />
             </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
+            <a href="https://x.com/dev_anindya" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+              <Twitter size={24} />
+            </a>
+            <a href="https://www.facebook.com/anindya.bhattacharya.50" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+              <Facebook size={24} />
+            </a>
+            <a href="mailto:anindyaholycross@gmail.com" className="text-gray-400 hover:text-white transition-colors">
               <Mail size={24} />
             </a>
           </div>

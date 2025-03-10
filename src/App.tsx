@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Github, Linkedin, Mail, ExternalLink, Code, Briefcase, User, Download, Award, BookOpen } from 'lucide-react';
+import profileImage from './assets/IMG-20240922-WA0232.jpg';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -128,7 +129,7 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="mb-8 animate-on-scroll">
             <img
-              src="/src/assets/IMG-20240922-WA0232.jpg"
+              src={profileImage}
               alt="Profile"
               className="w-32 h-32 rounded-full mx-auto border-2 border-white/20"
             />

@@ -35,15 +35,19 @@
   @apply text-4xl md:text-5xl font-light mb-8 gradient-text;
 }
 
-/* Scroll Animations */
+/* Smooth Scroll Animation Classes */
 .animate-on-scroll {
-  @apply opacity-0 translate-y-10 transition-all duration-700;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
 }
 
 .animate-on-scroll.animate-active {
-  @apply opacity-100 translate-y-0;
+  opacity: 1;
+  transform: translateY(0);
 }
 
+/* Stagger delays for child elements */
 .delay-100 {
   transition-delay: 100ms;
 }
@@ -58,6 +62,22 @@
 
 .delay-400 {
   transition-delay: 400ms;
+}
+
+/* Section-specific animations */
+#about, #skills, #projects, #achievements, #contact {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+#about.animate-active, 
+#skills.animate-active, 
+#projects.animate-active, 
+#achievements.animate-active, 
+#contact.animate-active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Starry Background */

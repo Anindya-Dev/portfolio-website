@@ -17,10 +17,11 @@ function App() {
 
     const observer = new IntersectionObserver(observerCallback, {
       threshold: 0.1,
-      rootMargin: '0px'
+      rootMargin: '50px'
     });
 
-    document.querySelectorAll('.animate-on-scroll').forEach(element => {
+    // Observe all sections and animated elements
+    document.querySelectorAll('.animate-on-scroll, #about, #skills, #projects, #achievements, #contact').forEach(element => {
       observer.observe(element);
     });
 

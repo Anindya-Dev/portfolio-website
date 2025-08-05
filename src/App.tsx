@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Github, Linkedin, Mail, ExternalLink, Code, Briefcase, User, Download, Award,  Facebook, Twitter } from 'lucide-react';
-import profileImage from './assets/IMG-20240922-WA0232.jpg';
+import profileImage from './assets/profile.jpg';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

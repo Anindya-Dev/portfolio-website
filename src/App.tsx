@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Github, Linkedin, Mail, Code, Briefcase, User, Download, Facebook, Twitter } from 'lucide-react';
 import profileImage from './assets/profile.jpg';
+import { certificates, type Certificate } from './data/certificates';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -105,25 +106,6 @@ function App() {
       items: [
         { name: 'Prompt Engineering', iconUrl: 'https://cdn.simpleicons.org/openai/412991' }
       ]
-    }
-  ];
-
-  const certificates = [
-    {
-      title: 'Introduction to Generative AI- Art of the possible',
-      issuer: 'Google Cloud',
-      date: '2025',
-      description: 'Comprehensive understanding of generative AI technologies and their practical applications',
-      skills: ['Generative AI', 'Machine Learning', 'AI Ethics'],
-      icon: '🤖'
-    },
-    {
-      title: 'Introduction to Prompt Engineering for GEN AI',
-      issuer: 'Google Cloud',
-      date: '2025',
-      description: 'Advanced techniques for effective prompt design and optimization for AI systems',
-      skills: ['Prompt Engineering', 'AI Optimization', 'Natural Language Processing'],
-      icon: '💡'
     }
   ];
 
@@ -255,6 +237,7 @@ function App() {
   const [activeShowcase, setActiveShowcase] = useState(0);
   const [isShowcasePlaying, setIsShowcasePlaying] = useState(true);
   const [showcaseProgress, setShowcaseProgress] = useState(0);
+  const [activeCertificate, setActiveCertificate] = useState<Certificate | null>(null);
 
   useEffect(() => {
     if (showcases.length <= 1 || !isShowcasePlaying) return;
@@ -720,7 +703,21 @@ function App() {
                 style={{ transitionDelay: `${index * 200}ms` }}
               >
                 <div className="flex items-start space-x-4 mb-6">
-                  <div className="text-4xl">{cert.icon}</div>
+                  {cert.logos && cert.logos.length > 0 ? (
+                    <div className="flex flex-wrap items-center gap-3">
+                      {cert.logos.map((logo) => (
+                        <img
+                          key={`${cert.title}-${logo.alt}`}
+                          src={logo.src}
+                          alt={logo.alt}
+                          className="h-10 w-10 object-contain"
+                          loading="lazy"
+                        />
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="text-4xl">{cert.icon}</div>
+                  )}
                   <div className="flex-1">
                     <h3 className="text-xl font-medium mb-2 text-gray-900 leading-tight">{cert.title}</h3>
                     <div className="flex items-center text-gray-600 mb-3">
@@ -743,11 +740,57 @@ function App() {
                     </span>
                   ))}
                 </div>
+                <div className="mt-6">
+                  {cert.imageSrc ? (
+                    <button
+                      type="button"
+                      className="btn-secondary"
+                      onClick={() => setActiveCertificate(cert)}
+                    >
+                      View Certificate
+                    </button>
+                  ) : (
+                    <p className="text-sm text-gray-500">Certificate image coming soon.</p>
+                  )}
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {activeCertificate && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-8">
+          <button
+            className="absolute inset-0 bg-black/60"
+            onClick={() => setActiveCertificate(null)}
+            aria-label="Close certificate preview"
+          />
+          <div className="relative w-full max-w-4xl rounded-2xl bg-white shadow-2xl overflow-hidden">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+              <div>
+                <p className="text-sm text-gray-500">Certificate</p>
+                <p className="text-lg font-semibold text-gray-900">{activeCertificate.title}</p>
+              </div>
+              <button
+                type="button"
+                className="px-3 py-1.5 rounded-full border border-gray-200 text-gray-600 hover:text-gray-900 hover:border-gray-300 transition"
+                onClick={() => setActiveCertificate(null)}
+              >
+                Close
+              </button>
+            </div>
+            <div className="bg-gray-50">
+              <img
+                src={activeCertificate.imageSrc}
+                alt={`${activeCertificate.title} certificate`}
+                className="w-full h-auto object-contain"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Contact Section */}
       <section id="contact" className="py-20">

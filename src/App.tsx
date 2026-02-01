@@ -554,10 +554,6 @@ function App() {
       {/* Skills Marquee Section */}
       <section id="skills" className="py-20">
         <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="section-title">Skills & Expertise</h2>
-            <div className="accent-line"></div>
-          </div>
           <div className="marquee marquee--full">
             <div
               className="marquee-track"

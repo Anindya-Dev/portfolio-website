@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin, Mail, ExternalLink, Code, Briefcase, User, Download, Award,  Facebook, Twitter } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Mail, Code, Briefcase, User, Download, Facebook, Twitter } from 'lucide-react';
 import profileImage from './assets/profile.jpg';
 
 function App() {
@@ -25,164 +25,461 @@ function App() {
       observer.observe(element);
     });
 
-    // Create stars
-    const createStars = () => {
-      const starsContainer = document.querySelector('.stars-container');
-      if (!starsContainer) return;
-
-      // Clear existing stars
-      starsContainer.innerHTML = '';
-
-      // Create new stars
-      const numberOfStars = 200;
-      for (let i = 0; i < numberOfStars; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        
-        const size = Math.random() * 2 + 1;
-        star.style.width = `${size}px`;
-        star.style.height = `${size}px`;
-        
-        star.style.left = `${Math.random() * 100}%`;
-        star.style.top = `${Math.random() * 100}%`;
-        
-        star.style.setProperty('--twinkle-duration', `${Math.random() * 3 + 2}s`);
-        star.style.setProperty('--twinkle-delay', `${Math.random() * 3}s`);
-        star.style.setProperty('--twinkle-opacity', `${Math.random() * 0.7 + 0.3}`);
-        
-        starsContainer.appendChild(star);
-      }
-    };
-
-    createStars();
-    window.addEventListener('resize', createStars);
-
     return () => {
       observer.disconnect();
-      window.removeEventListener('resize', createStars);
     };
   }, []);
 
   const skills = [
-    { name: 'React', level: 90 },
-    { name: 'TypeScript', level: 85 },
-    { name: 'Node.js', level: 80 },
-    { name: 'Python', level: 75 },
-    { name: 'C Programming', level: 70 },
-    { name: 'DSA', level: 65 },
-    { name: 'Prompt Engineering', level: 60 },
+    { name: 'Python', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
+    { name: 'Java', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg' },
+    { name: 'C', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg' },
+    { name: 'HTML', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg' },
+    { name: 'MySQL', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg' },
+    { name: 'PostgreSQL', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg' },
+    { name: 'Flask', iconUrl: 'https://cdn.simpleicons.org/flask/000000' },
+    { name: 'NumPy', iconUrl: 'https://cdn.simpleicons.org/numpy/013243' },
+    { name: 'Pandas', iconUrl: 'https://cdn.simpleicons.org/pandas/150458' },
+    { name: 'Matplotlib', iconUrl: 'https://cdn.simpleicons.org/matplotlib/11557C' },
+    { name: 'Excel', iconUrl: 'https://cdn.simpleicons.org/microsoftexcel/217346' },
+    { name: 'Scikit-learn', iconUrl: 'https://cdn.simpleicons.org/scikitlearn/F7931E' },
+    { name: 'Git', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg' },
+    { name: 'GitHub', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg' },
+    { name: 'VS Code', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg' },
+    { name: 'Docker', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
+    { name: 'Jupyter', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jupyter/jupyter-original.svg' },
+    { name: 'Prompt Engineering', iconUrl: 'https://cdn.simpleicons.org/openai/412991' }
   ];
 
-  const achievements = [
+  const techCategories = [
     {
-      title: 'Introduction to Generative AI- Art of the possible',
-      date: '2025',
-      icon: Award
+      title: 'Languages',
+      subtitle: 'Programming fundamentals',
+      items: [
+        { name: 'Python', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
+        { name: 'Java', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg' },
+        { name: 'C', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg' },
+        { name: 'HTML', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg' }
+      ]
     },
     {
-      title: 'Introduction to Prompt Engineering for GEN AI',
-      date: '2025',
-      icon: Award
+      title: 'Databases',
+      subtitle: 'Data storage',
+      items: [
+        { name: 'MySQL', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg' },
+        { name: 'PostgreSQL', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg' }
+      ]
+    },
+    {
+      title: 'Backend',
+      subtitle: 'APIs & services',
+      items: [
+        { name: 'Flask', iconUrl: 'https://cdn.simpleicons.org/flask/000000' }
+      ]
+    },
+    {
+      title: 'Data Analytics',
+      subtitle: 'Insights & visualization',
+      items: [
+        { name: 'NumPy', iconUrl: 'https://cdn.simpleicons.org/numpy/013243' },
+        { name: 'Pandas', iconUrl: 'https://cdn.simpleicons.org/pandas/150458' },
+        { name: 'Matplotlib', iconUrl: 'https://cdn.simpleicons.org/matplotlib/11557C' },
+        { name: 'Excel', iconUrl: 'https://cdn.simpleicons.org/microsoftexcel/217346' },
+        { name: 'Scikit-learn', iconUrl: 'https://cdn.simpleicons.org/scikitlearn/F7931E' }
+      ]
+    },
+    {
+      title: 'Tools',
+      subtitle: 'Workflow & productivity',
+      items: [
+        { name: 'Git', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg' },
+        { name: 'GitHub', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg' },
+        { name: 'VS Code', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg' },
+        { name: 'Docker', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
+        { name: 'Jupyter', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jupyter/jupyter-original.svg' }
+      ]
+    },
+    {
+      title: 'AI Skills',
+      subtitle: 'Applied AI',
+      items: [
+        { name: 'Prompt Engineering', iconUrl: 'https://cdn.simpleicons.org/openai/412991' }
+      ]
     }
   ];
 
-  return (
-    <div className="min-h-screen bg-black text-white">
-      <div className="stars-container" />
-      <div className="cosmic-gradient" />
+  const certificates = [
+    {
+      title: 'Introduction to Generative AI- Art of the possible',
+      issuer: 'Google Cloud',
+      date: '2025',
+      description: 'Comprehensive understanding of generative AI technologies and their practical applications',
+      skills: ['Generative AI', 'Machine Learning', 'AI Ethics'],
+      icon: '🤖'
+    },
+    {
+      title: 'Introduction to Prompt Engineering for GEN AI',
+      issuer: 'Google Cloud',
+      date: '2025',
+      description: 'Advanced techniques for effective prompt design and optimization for AI systems',
+      skills: ['Prompt Engineering', 'AI Optimization', 'Natural Language Processing'],
+      icon: '💡'
+    }
+  ];
 
+  const focusAreas = [
+    {
+      title: 'Applied Machine Learning',
+      description: 'Building and evaluating models for real-world problem solving.',
+      items: ['Classification', 'Regression', 'Model evaluation']
+    },
+    {
+      title: 'Data Analytics',
+      description: 'Transforming data into insights with clean, explainable workflows.',
+      items: ['Exploratory analysis', 'Visualization', 'Feature engineering']
+    },
+    {
+      title: 'Developer Workflow',
+      description: 'Organized, reproducible work with strong tooling and version control.',
+      items: ['Git/GitHub', 'Jupyter', 'Docker basics']
+    }
+  ];
+
+  const projects = [
+    {
+      title: 'AI Market Signals',
+      description: 'ML-driven signal generation for financial time-series with a focus on robustness and explainability.',
+      tags: ['Python', 'ML', 'Finance'],
+      caseStudy: {
+        problem: 'Interpreting noisy financial data to extract meaningful signals.',
+        approach: 'Built an ML pipeline with feature engineering, model training, and evaluation loops.',
+        outcome: 'Produced a working prototype with explainable signal outputs.'
+      },
+      imageSrc: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1200&q=80',
+      href: 'https://github.com/Anindya-Dev'
+    },
+    {
+      title: 'Portfolio Analytics Dashboard',
+      description: 'Interactive dashboard for performance attribution, risk metrics, and allocation insights.',
+      tags: ['React', 'TypeScript', 'DataViz'],
+      caseStudy: {
+        problem: 'Consolidating portfolio insights into a single, readable view.',
+        approach: 'Designed a component-based UI with reusable charts and filters.',
+        outcome: 'Created a clean dashboard for exploring performance and risk.'
+      },
+      imageSrc: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80',
+      href: 'https://github.com/Anindya-Dev'
+    },
+    {
+      title: 'Automated Strategy Backtester',
+      description: 'Backtesting framework with configurable strategies, transaction costs, and reporting.',
+      tags: ['Node.js', 'Backtesting', 'Quant'],
+      caseStudy: {
+        problem: 'Evaluating strategies consistently before deployment.',
+        approach: 'Implemented a rule-driven backtesting engine with report outputs.',
+        outcome: 'Delivered reproducible backtest results for experimentation.'
+      },
+      imageSrc: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80',
+      href: 'https://github.com/Anindya-Dev'
+    }
+  ];
+
+  const showcases = [
+    {
+      title: 'Parking Slot Identification',
+      subtitle: 'Computer vision–based parking analysis',
+      description: 'Designed a system to detect occupied and available parking slots using visual data.',
+      features: [
+        'Image/video frame processing',
+        'Parking slot detection logic',
+        'Occupancy status identification'
+      ],
+      tech: ['Python', 'OpenCV', 'Computer Vision'],
+      imageSrc: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1400&q=80',
+      href: 'https://github.com/Anindya-Dev/Galaxy-Geeks'
+    },
+    {
+      title: 'House Price Prediction',
+      subtitle: 'Predictive modeling on structured housing data',
+      description: 'Developed a regression-based model to predict house prices using multiple numerical and categorical features.',
+      features: [
+        'Data cleaning and feature engineering',
+        'Regression model training',
+        'Price prediction analysis'
+      ],
+      tech: ['Python', 'Regression', 'Data Analysis'],
+      imageSrc: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1400&q=80',
+      href: 'https://github.com/Anindya-Dev/House_Price_Prediction'
+    },
+    {
+      title: 'Customer Segmentation System',
+      subtitle: 'Unsupervised learning for customer analysis',
+      description: 'Applied clustering techniques to group customers based on behavioral patterns and attributes.',
+      features: [
+        'Exploratory data analysis',
+        'Clustering using unsupervised algorithms',
+        'Visualization of customer segments'
+      ],
+      tech: ['Python', 'Clustering', 'Machine Learning'],
+      imageSrc: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80',
+      href: 'https://github.com/Anindya-Dev/Customer_segmentation_system'
+    },
+    {
+      title: 'Hand Gesture Identification',
+      subtitle: 'Grayscale CNN–based gesture recognition',
+      description: 'Designed a convolutional neural network to identify hand gestures from grayscale images, focusing on classification accuracy and robustness.',
+      features: [
+        'Grayscale image preprocessing',
+        'CNN-based gesture classification',
+        'Model training and evaluation'
+      ],
+      tech: ['Python', 'CNN', 'Computer Vision'],
+      imageSrc: 'https://images.unsplash.com/photo-1504257432389-52343af06ae3?auto=format&fit=crop&w=1400&q=80',
+      href: 'https://github.com/Anindya-Dev/Hand_Gesture_Recognition_System'
+    },
+    {
+      title: 'Cat–Dog Image Classifier',
+      subtitle: 'Deep learning–based image classification',
+      description: 'Built a convolutional neural network to classify images of cats and dogs with a focus on feature extraction and model evaluation.',
+      features: [
+        'Image preprocessing and augmentation',
+        'CNN-based classification model',
+        'Performance evaluation on unseen data'
+      ],
+      tech: ['Python', 'CNN', 'Computer Vision'],
+      imageSrc: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=1400&q=80',
+      href: 'https://github.com/Anindya-Dev/cat_vs_dogs_classifier'
+    }
+  ];
+
+  const [activeShowcase, setActiveShowcase] = useState(0);
+  const [isShowcasePlaying, setIsShowcasePlaying] = useState(true);
+  const [showcaseProgress, setShowcaseProgress] = useState(0);
+
+  useEffect(() => {
+    if (showcases.length <= 1 || !isShowcasePlaying) return;
+    setShowcaseProgress(0);
+
+    const duration = 4500;
+    const start = performance.now();
+    let frame = 0;
+
+    const animate = (time: number) => {
+      const elapsed = time - start;
+      const pct = Math.min(elapsed / duration, 1);
+      setShowcaseProgress(pct);
+
+      if (pct < 1) {
+        frame = requestAnimationFrame(animate);
+      } else {
+        setActiveShowcase((prev) => (prev + 1) % showcases.length);
+      }
+    };
+
+    frame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frame);
+  }, [activeShowcase, isShowcasePlaying, showcases.length]);
+
+  return (
+    <div className="min-h-screen bg-white text-gray-900 relative overflow-hidden">
+      <div className="page-bg">
+        <div className="bg-blob bg-blob--one" />
+        <div className="bg-blob bg-blob--two" />
+        <div className="bg-blob bg-blob--three" />
+        <div className="bg-grid" />
+      </div>
       {/* Navigation */}
-      <nav className="fixed w-full z-50 bg-black/90 backdrop-blur-sm border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="fixed w-full z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <span className="text-xl font-semibold gradient-text">Portfolio</span>
+            <span className="text-xl font-bold brand-mark">AB</span>
             
             <div className="hidden md:flex items-center space-x-8">
+              <a href="#about" className="nav-link">Home</a>
               <a href="#about" className="nav-link">About</a>
-              <a href="#skills" className="nav-link">Skills</a>
               <a href="#projects" className="nav-link">Projects</a>
-              <a href="#achievements" className="nav-link">Achievements</a>
+              <a href="#techstack" className="nav-link">Tech Stack</a>
+              <a href="#skills" className="nav-link">Skills</a>
+              <a href="#certificates" className="nav-link">Certifications</a>
               <a href="#contact" className="nav-link">Contact</a>
             </div>
 
-            <button 
-              className="md:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            <div className="flex items-center space-x-4">
+              <button className="p-2 text-gray-600 hover:text-gray-900 transition-colors">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+              </button>
+              <button 
+                className="md:hidden text-gray-600 hover:text-gray-900"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
           </div>
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-black/90">
-              <a href="#about" className="block px-3 py-2 text-gray-300 hover:text-white">About</a>
-              <a href="#skills" className="block px-3 py-2 text-gray-300 hover:text-white">Skills</a>
-              <a href="#projects" className="block px-3 py-2 text-gray-300 hover:text-white">Projects</a>
-              <a href="#achievements" className="block px-3 py-2 text-gray-300 hover:text-white">Achievements</a>
-              <a href="#contact" className="block px-3 py-2 text-gray-300 hover:text-white">Contact</a>
+          <div className="md:hidden bg-white border-t border-gray-100">
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              <a href="#about" className="block px-3 py-2 text-gray-600 hover:text-gray-900">Home</a>
+              <a href="#about" className="block px-3 py-2 text-gray-600 hover:text-gray-900">About</a>
+              <a href="#projects" className="block px-3 py-2 text-gray-600 hover:text-gray-900">Projects</a>
+              <a href="#techstack" className="block px-3 py-2 text-gray-600 hover:text-gray-900">Tech Stack</a>
+              <a href="#skills" className="block px-3 py-2 text-gray-600 hover:text-gray-900">Skills</a>
+              <a href="#certificates" className="block px-3 py-2 text-gray-600 hover:text-gray-900">Certifications</a>
+              <a href="#contact" className="block px-3 py-2 text-gray-600 hover:text-gray-900">Contact</a>
             </div>
           </div>
         )}
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="mb-8 animate-on-scroll">
-            <img
-              src={profileImage}
-              alt="Profile"
-              className="w-32 h-32 rounded-full mx-auto border-2 border-white/20"
-            />
+      <section className="pt-32 pb-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-10">
+              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-emerald-50 text-emerald-700 text-sm font-semibold shadow-sm">
+                <span className="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                Available for work
+              </div>
+
+              <div className="space-y-6">
+                <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-gray-900 tracking-tight leading-none">
+                  Anindya<br />Bhattacharya
+                </h1>
+                <h2 className="text-2xl md:text-3xl font-semibold text-gray-900">
+                  BTech CSE (AI/ML) Student
+                </h2>
+                <div className="flex items-center text-gray-500 text-lg">
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                  </svg>
+                  Kolkata, India
+                </div>
+              </div>
+
+              <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
+                I’m a BTech CSE (AI/ML) student at Brainware University, currently in my third year. I’m focused on
+                learning and building in the field of artificial intelligence and machine learning, with an interest
+                in applying these concepts to real-world problems.
+              </p>
+
+              <div className="flex flex-wrap gap-4">
+                <a href="#projects" className="btn-primary">View Projects</a>
+                <a href="#contact" className="btn-secondary">Book a call</a>
+              </div>
+
+              <div className="grid grid-cols-3 gap-4 max-w-lg">
+                <div className="stats-card hover-lift">
+                  <p className="text-sm text-gray-500">Program</p>
+                  <p className="text-2xl font-bold text-gray-900">BTech CSE</p>
+                </div>
+                <div className="stats-card hover-lift">
+                  <p className="text-sm text-gray-500">Specialization</p>
+                  <p className="text-2xl font-bold text-gray-900">AI/ML</p>
+                </div>
+                <div className="stats-card hover-lift">
+                  <p className="text-sm text-gray-500">Year</p>
+                  <p className="text-2xl font-bold text-gray-900">3rd</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex justify-center lg:justify-end">
+              <div className="relative">
+                <div className="hero-portrait">
+                  <img src={profileImage} alt="Profile" className="w-full h-full object-cover" />
+                </div>
+                <div className="absolute -bottom-6 -left-6 glass-card p-4 flex items-center space-x-3 hover-lift">
+                  <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                    <Code className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-gray-900">AI & ML</p>
+                    <p className="text-xs text-gray-500">Specialist</p>
+                  </div>
+                </div>
+                <div className="absolute -top-6 right-6 glass-card px-4 py-3 hover-lift">
+                  <p className="text-xs text-gray-500">Currently exploring</p>
+                  <p className="text-sm font-semibold text-gray-900">Quant Strategies</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <h1 className="text-5xl md:text-7xl font-light mb-6 gradient-text animate-on-scroll">
-            AI & ML Enthusiast | Software Developer
-          </h1>
-          <h2 className="text-3xl md:text-4xl font-light mb-8 text-white/80 animate-on-scroll delay-100">
-             Anindya Bhattacharya
-          </h2>
-          <p className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto animate-on-scroll delay-200">
-              Exploring the intersection of AI, software development, and finance.
-          </p>
-          <div className="mt-8 animate-on-scroll delay-300">
-            <a 
-              href="#contact" 
-              className="inline-flex items-center px-6 py-3 border border-white/20 rounded-full text-white hover:bg-white/10 transition-colors"
-            >
-              Get in touch
-            </a>
+        </div>
+      </section>
+
+      {/* Proof Strip */}
+      <section className="py-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="proof-strip">
+            <div className="proof-item">
+              <span className="proof-label">Focused on</span>
+              <span className="proof-value">AI/ML • Applied Learning</span>
+            </div>
+            <div className="proof-divider" />
+            <div className="proof-item">
+              <span className="proof-label">Projects</span>
+              <span className="proof-value">Published on GitHub</span>
+            </div>
+            <div className="proof-divider" />
+            <div className="proof-item">
+              <span className="proof-label">Certificates</span>
+              <span className="proof-value">Learning milestones</span>
+            </div>
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="section-title animate-on-scroll">About Me</h2>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+      <section id="about" className="py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="section-title">About Me</h2>
+            <div className="accent-line"></div>
+          </div>
+          <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="animate-on-scroll">
               <img 
                 src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
                 alt="Workspace"
-                className="rounded-lg shadow-2xl"
+                className="rounded-lg shadow-lg"
               />
             </div>
             <div className="space-y-6 animate-on-scroll delay-200">
-              <p className="text-gray-300 text-lg">
-              I'm an AI & ML enthusiast passionate about automation in financial markets.
-              I focus on AI-driven trading strategies, predictive models, and quantitative finance,
-              leveraging data and automation to optimize financial decision-making.
+              <p className="text-gray-600 text-lg leading-relaxed">
+                I’m a BTech CSE (AI/ML) student at Brainware University, currently in my third year. I’m focused on
+                learning and building in the field of artificial intelligence and machine learning, with an interest
+                in applying these concepts to real-world problems.
               </p>
-              <div className="flex space-x-4">
-                <User size={24} className="text-gray-400" />
-                <Code size={24} className="text-gray-400" />
-                <Briefcase size={24} className="text-gray-400" />
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="info-card">
+                  <p className="text-sm text-gray-500">University</p>
+                  <p className="text-base font-semibold text-gray-900">Brainware University</p>
+                </div>
+                <div className="info-card">
+                  <p className="text-sm text-gray-500">Program</p>
+                  <p className="text-base font-semibold text-gray-900">BTech CSE (AI/ML)</p>
+                </div>
+                <div className="info-card">
+                  <p className="text-sm text-gray-500">Current Year</p>
+                  <p className="text-base font-semibold text-gray-900">3rd Year</p>
+                </div>
+                <div className="info-card">
+                  <p className="text-sm text-gray-500">Focus</p>
+                  <p className="text-base font-semibold text-gray-900">AI/ML Projects</p>
+                </div>
+              </div>
+              <div className="flex space-x-6 text-gray-400">
+                <User size={24} />
+                <Code size={24} />
+                <Briefcase size={24} />
               </div>
               <a 
                 href="/resume.pdf" 
-                className="inline-flex items-center px-4 py-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
+                className="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium shadow-md hover:shadow-lg"
               >
                 <Download size={20} className="mr-2" />
                 Download Resume
@@ -192,60 +489,214 @@ function App() {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="py-20 bg-zinc-900/50 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="section-title animate-on-scroll">Skills & Expertise</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {skills.map((skill, index) => (
-              <div 
-                key={skill.name}
-                className="animate-on-scroll"
-                style={{ transitionDelay: `${index * 100}ms` }}
-              >
-                <div className="flex justify-between mb-2">
-                  <span className="text-lg text-gray-300">{skill.name}</span>
-                  <span className="text-gray-400">{skill.level}%</span>
+      {/* Focus Areas */}
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="section-title">What I’m Building</h2>
+            <div className="accent-line"></div>
+            <p className="text-gray-600 text-lg">A clear view of the work I focus on and enjoy</p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {focusAreas.map((area) => (
+              <div key={area.title} className="feature-card hover-lift">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">{area.title}</h3>
+                <p className="text-gray-600 mb-4">{area.description}</p>
+                <ul className="feature-list">
+                  {area.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tech Stack Section */}
+      <section id="techstack" className="py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="section-title">Tech Stack</h2>
+            <div className="accent-line"></div>
+            <p className="text-gray-600 text-lg">Technologies and tools I work with</p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {techCategories.map((category) => (
+              <div key={category.title} className="tech-card">
+                <div className="flex items-center gap-3 mb-6">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">{category.title}</h3>
+                    <p className="text-sm text-gray-500">{category.subtitle}</p>
+                  </div>
                 </div>
-                <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                  <div 
-                    className="h-full bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"
-                    style={{ width: `${skill.level}%` }}
-                  />
+                <div className="flex flex-wrap gap-2">
+                  {category.items.map((item) => (
+                    <div className="tech-pill" key={`${category.title}-${item.name}`}>
+                      <img src={item.iconUrl} alt={item.name} className="tech-pill-icon" loading="lazy" />
+                      <span className="tech-pill-label">{item.name}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+      {/* Skills Marquee Section */}
+      <section id="skills" className="py-20">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="section-title">Skills & Expertise</h2>
+            <div className="accent-line"></div>
+          </div>
+          <div className="marquee marquee--full">
+            <div
+              className="marquee-track"
+              style={{ ['--marquee-duration' as never]: '10s', ['--marquee-distance' as never]: '-33.333%' }}
+            >
+              {[...skills, ...skills, ...skills].map((skill, index) => (
+                <div className="marquee-item" key={`${skill.name}-${index}`}>
+                  <img src={skill.iconUrl} alt={skill.name} className="marquee-icon" loading="lazy" />
+                  <span className="marquee-label">{skill.name}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Projects Section */}
       <section id="projects" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="section-title animate-on-scroll">Featured Projects</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map((project) => (
-              <div 
-                key={project} 
-                className="bg-black/40 backdrop-blur-sm rounded-lg overflow-hidden border border-white/10 hover:border-white/20 transition-colors animate-on-scroll"
-                style={{ transitionDelay: `${project * 200}ms` }}
-              >
-                <img 
-                  src={`https://images.unsplash.com/photo-151030${project}856882-6384d4649718?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80`}
-                  alt={`Project ${project}`}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">Project Title {project}</h3>
-                  <p className="text-gray-400 mb-4">Brief project description showcasing the key features and technologies used.</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="px-2 py-1 bg-white/10 rounded-full text-sm">React</span>
-                    <span className="px-2 py-1 bg-white/10 rounded-full text-sm">TypeScript</span>
-                    <span className="px-2 py-1 bg-white/10 rounded-full text-sm">Node.js</span>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="section-title">Featured Projects</h2>
+            <div className="accent-line"></div>
+            <p className="text-gray-600 text-lg">Selected AI/ML projects from my GitHub</p>
+          </div>
+          <div className="showcase">
+            <div
+              className="showcase-track"
+              style={{ transform: `translateX(-${activeShowcase * 100}%)` }}
+            >
+              {showcases.map((project) => (
+                <article key={project.title} className="showcase-card">
+                  <div className="showcase-content">
+                    <div className="showcase-pill">Project</div>
+                    <h3 className="showcase-title">{project.title}</h3>
+                    <p className="showcase-subtitle">{project.subtitle}</p>
+                    <p className="showcase-description">{project.description}</p>
+                    <div className="showcase-section">
+                      <p className="showcase-section-title">Key Features</p>
+                      <ul className="showcase-list">
+                        {project.features.map((feature) => (
+                          <li key={feature}>{feature}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="showcase-tech">
+                      {project.tech.map((item) => (
+                        <span key={item} className="showcase-tech-pill">{item}</span>
+                      ))}
+                    </div>
+                    <div className="showcase-actions">
+                      <a href={project.href} target="_blank" rel="noopener noreferrer" className="btn-primary">
+                        View Code
+                      </a>
+                      <a href="#contact" className="btn-secondary">Let’s Talk</a>
+                    </div>
                   </div>
-                  <a href="#" className="inline-flex items-center text-white hover:text-gray-300">
-                    View Project <ExternalLink size={16} className="ml-2" />
+                  <div className="showcase-media">
+                    <img src={project.imageSrc} alt={project.title} loading="lazy" />
+                  </div>
+                </article>
+              ))}
+            </div>
+            <div className="showcase-controls">
+              <div className="showcase-control-pill">
+                <div className="indicator-dots">
+                  {showcases.map((project, index) =>
+                    index === activeShowcase ? (
+                      <button
+                        key={project.title}
+                        className="indicator-track"
+                        onClick={() => setActiveShowcase(index)}
+                        aria-label={`Show ${project.title}`}
+                      >
+                        <span className="indicator-fill" style={{ width: `${showcaseProgress * 100}%` }} />
+                      </button>
+                    ) : (
+                      <button
+                        key={project.title}
+                        className="indicator-dot"
+                        onClick={() => setActiveShowcase(index)}
+                        aria-label={`Show ${project.title}`}
+                      />
+                    )
+                  )}
+                </div>
+              </div>
+              <button
+                className="showcase-play"
+                onClick={() => setIsShowcasePlaying((prev) => !prev)}
+                aria-label={isShowcasePlaying ? 'Pause showcase' : 'Play showcase'}
+              >
+                {isShowcasePlaying ? (
+                  <span className="showcase-pause">
+                    <span />
+                    <span />
+                  </span>
+                ) : (
+                  <span className="showcase-play-triangle" />
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Case Studies Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="section-title">Case Study Snapshots</h2>
+            <div className="accent-line"></div>
+            <p className="text-gray-600 text-lg">Problem → Approach → Outcome, summarized</p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {projects.map((project) => (
+              <div key={project.title} className="case-card hover-lift">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-semibold text-gray-900">{project.title}</h3>
+                  <a
+                    href={project.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-blue-600 hover:text-blue-700 font-semibold"
+                  >
+                    GitHub
                   </a>
+                </div>
+                <div className="space-y-4 text-sm text-gray-600">
+                  <div>
+                    <p className="case-label">Problem</p>
+                    <p className="case-value">{project.caseStudy.problem}</p>
+                  </div>
+                  <div>
+                    <p className="case-label">Approach</p>
+                    <p className="case-value">{project.caseStudy.approach}</p>
+                  </div>
+                  <div>
+                    <p className="case-label">Outcome</p>
+                    <p className="case-value">{project.caseStudy.outcome}</p>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-2 mt-6">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="px-3 py-1 bg-white text-gray-700 rounded-full text-xs font-medium border border-gray-100">
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
             ))}
@@ -253,21 +704,44 @@ function App() {
         </div>
       </section>
 
-      {/* Achievements Section */}
-      <section id="achievements" className="py-20 bg-zinc-900/50 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="section-title animate-on-scroll">Achievements</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {achievements.map((achievement, index) => (
+      {/* Certificates Section */}
+      <section id="certificates" className="py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="section-title">Certificates</h2>
+            <div className="accent-line"></div>
+            <p className="text-gray-600 text-lg">Professional certifications and learning achievements</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {certificates.map((cert, index) => (
               <div 
-                key={achievement.title}
-                className="flex items-start space-x-4 bg-black/40 p-6 rounded-lg border border-white/10 animate-on-scroll"
+                key={cert.title}
+                className="card p-8 animate-on-scroll hover:scale-105 transition-all duration-300"
                 style={{ transitionDelay: `${index * 200}ms` }}
               >
-                <achievement.icon size={24} className="text-purple-500 flex-shrink-0" />
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">{achievement.title}</h3>
-                  <p className="text-gray-400">{achievement.date}</p>
+                <div className="flex items-start space-x-4 mb-6">
+                  <div className="text-4xl">{cert.icon}</div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-medium mb-2 text-gray-900 leading-tight">{cert.title}</h3>
+                    <div className="flex items-center text-gray-600 mb-3">
+                      <span className="font-medium">{cert.issuer}</span>
+                      <span className="mx-2">•</span>
+                      <span>{cert.date}</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <p className="text-gray-600 mb-6 leading-relaxed">{cert.description}</p>
+                
+                <div className="flex flex-wrap gap-2">
+                  {cert.skills.map((skill) => (
+                    <span 
+                      key={skill}
+                      className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
+                    >
+                      {skill}
+                    </span>
+                  ))}
                 </div>
               </div>
             ))}
@@ -277,34 +751,37 @@ function App() {
 
       {/* Contact Section */}
       <section id="contact" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="section-title animate-on-scroll">Get In Touch</h2>
-          <p className="text-gray-400 mb-8 max-w-2xl mx-auto animate-on-scroll delay-200">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="mb-16">
+            <h2 className="section-title">Get In Touch</h2>
+            <div className="accent-line"></div>
+          </div>
+          <p className="text-gray-600 mb-12 max-w-2xl mx-auto animate-on-scroll delay-200 text-lg leading-relaxed">
             Interested in working together? Let's connect and discuss your next project.
           </p>
-          <div className="flex justify-center space-x-6 animate-on-scroll delay-400">
-            <a href="https://github.com/Anindya-Dev" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-              <Github size={24} />
+          <div className="flex justify-center space-x-8 animate-on-scroll delay-400">
+            <a href="https://github.com/Anindya-Dev" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900 transition-colors">
+              <Github size={28} />
             </a>
-            <a href="https://www.linkedin.com/in/anindya-bhattacharya-83b68a254/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-              <Linkedin size={24} />
+            <a href="https://www.linkedin.com/in/anindya-bhattacharya-83b68a254/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900 transition-colors">
+              <Linkedin size={28} />
             </a>
-            <a href="https://x.com/dev_anindya" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-              <Twitter size={24} />
+            <a href="https://x.com/dev_anindya" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900 transition-colors">
+              <Twitter size={28} />
             </a>
-            <a href="https://www.facebook.com/anindya.bhattacharya.50" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-              <Facebook size={24} />
+            <a href="https://www.facebook.com/anindya.bhattacharya.50" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900 transition-colors">
+              <Facebook size={28} />
             </a>
-            <a href="mailto:anindyaholycross@gmail.com" className="text-gray-400 hover:text-white transition-colors">
-              <Mail size={24} />
+            <a href="mailto:anindyaholycross@gmail.com" className="text-gray-600 hover:text-gray-900 transition-colors">
+              <Mail size={28} />
             </a>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-8 border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
+      <footer className="py-8 border-t border-gray-200 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500">
           <p>© {new Date().getFullYear()} Anindya Bhattacharya. All rights reserved.</p>
         </div>
       </footer>

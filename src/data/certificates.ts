@@ -22,9 +22,9 @@ export const certificates: Certificate[] = [
     description: 'Certificate of completion for foundational generative AI concepts and applications.',
     skills: ['Generative AI'],
     icon: '🤖',
-    imageSrc: '/src/assets/certificates/aws-generative-ai-art-of-possible.png',
+    imageSrc: '/certificates/aws-generative-ai-art-of-possible.png',
     logos: [
-      { src: '/src/assets/certificates/logos/aws-training-certification.png', alt: 'AWS Training and Certification' }
+      { src: '/certificates/logos/aws.png', alt: 'AWS' }
     ]
   },
   {
@@ -34,10 +34,10 @@ export const certificates: Certificate[] = [
     description: 'Completed the AWS Solutions Architecture Job Simulation on Forage with hands-on experience designing scalable, secure, and cost-efficient cloud solutions. Covered high-availability auto-scaling architectures, deployment automation with Elastic Beanstalk and CodePipeline, and real-world challenges like downtime, disaster recovery, and performance optimization.',
     skills: ['Solutions Architecture'],
     icon: '🧩',
-    imageSrc: '/src/assets/certificates/aws-forage-solutions-architecture.png',
+    imageSrc: '/certificates/aws-forage-solutions-architecture.png',
     logos: [
-      { src: '/src/assets/certificates/logos/aws.png', alt: 'AWS' },
-      { src: '/src/assets/certificates/logos/forage.png', alt: 'Forage' }
+      { src: '/certificates/logos/aws.png', alt: 'AWS' },
+      { src: '/certificates/logos/forage.png', alt: 'Forage' }
     ]
   },
   {
@@ -47,10 +47,10 @@ export const certificates: Certificate[] = [
     description: 'Job simulation completion focused on data analytics tasks.',
     skills: ['Data Analytics'],
     icon: '📊',
-    imageSrc: '/src/assets/certificates/deloitte-forage-data-analytics.png',
+    imageSrc: '/certificates/deloitte-forage-data-analytics.png',
     logos: [
-      { src: '/src/assets/certificates/logos/deloitte.png', alt: 'Deloitte' },
-      { src: '/src/assets/certificates/logos/forage.png', alt: 'Forage' }
+      { src: '/certificates/logos/deloitte.png', alt: 'Deloitte' },
+      { src: '/certificates/logos/forage.png', alt: 'Forage' }
     ]
   },
   {
@@ -60,10 +60,10 @@ export const certificates: Certificate[] = [
     description: 'Learning path completion in generative AI productivity skills.',
     skills: ['Generative AI', 'Productivity'],
     icon: '✨',
-    imageSrc: '/src/assets/certificates/linkedin-microsoft-genai-productivity.png',
+    imageSrc: '/certificates/linkedin-microsoft-genai-productivity.png',
     logos: [
-      { src: '/src/assets/certificates/logos/microsoft.png', alt: 'Microsoft' },
-      { src: '/src/assets/certificates/logos/linkedin.png', alt: 'LinkedIn Learning' }
+      { src: '/certificates/logos/microsoft.png', alt: 'Microsoft' },
+      { src: '/certificates/logos/linkedin.png', alt: 'LinkedIn Learning' }
     ]
   },
   {
@@ -73,10 +73,10 @@ export const certificates: Certificate[] = [
     description: 'Certificate of participation in the IBM Technovate tech event.',
     skills: ['Tech Events'],
     icon: '🏆',
-    imageSrc: '/src/assets/certificates/brainware-ibm-technovate.png',
+    imageSrc: '/certificates/brainware-ibm-technovate.png',
     logos: [
-      { src: '/src/assets/certificates/logos/brainware-university.png', alt: 'Brainware University' },
-      { src: '/src/assets/certificates/logos/ibm.png', alt: 'IBM' }
+      { src: '/certificates/logos/brainware-university.png', alt: 'Brainware University' },
+      { src: '/certificates/logos/ibm.png', alt: 'IBM' }
     ]
   },
   {
@@ -86,9 +86,9 @@ export const certificates: Certificate[] = [
     description: 'Course completion covering prompt engineering fundamentals.',
     skills: ['Prompt Engineering'],
     icon: '💡',
-    imageSrc: '/src/assets/certificates/linkedin-prompt-engineering-genai.png',
+    imageSrc: '/certificates/linkedin-prompt-engineering-genai.png',
     logos: [
-      { src: '/src/assets/certificates/logos/linkedin.png', alt: 'LinkedIn Learning' }
+      { src: '/certificates/logos/linkedin.png', alt: 'LinkedIn Learning' }
     ]
   },
   {
@@ -98,9 +98,9 @@ export const certificates: Certificate[] = [
     description: 'Course completion focused on PostgreSQL and SQL development.',
     skills: ['PostgreSQL', 'SQL'],
     icon: '🗃️',
-    imageSrc: '/src/assets/certificates/simplilearn-postgresql-sql.png',
+    imageSrc: '/certificates/simplilearn-postgresql-sql.png',
     logos: [
-      { src: '/src/assets/certificates/logos/simplilearn.png', alt: 'Simplilearn SkillUp' }
+      { src: '/certificates/logos/simplilearn.png', alt: 'Simplilearn SkillUp' }
     ]
   },
   {
@@ -110,10 +110,10 @@ export const certificates: Certificate[] = [
     description: 'Completed the GenAI Powered Data Analytics Job Simulation with Tata Group on Forage, covering exploratory data analysis and financial risk profiling, delinquency prediction with AI/ML models, and data-driven business reporting for collections strategy. Strengthened the ability to connect insights with actionable, ethical, and transparent AI decisions.',
     skills: ['Data Analytics', 'GenAI'],
     icon: '🧠',
-    imageSrc: '/src/assets/certificates/tata-forage-genai-analytics.png',
+    imageSrc: '/certificates/tata-forage-genai-analytics.png',
     logos: [
-      { src: '/src/assets/certificates/logos/tata.png', alt: 'Tata' },
-      { src: '/src/assets/certificates/logos/forage.png', alt: 'Forage' }
+      { src: '/certificates/logos/tata.png', alt: 'Tata' },
+      { src: '/certificates/logos/forage.png', alt: 'Forage' }
     ]
   },
   {
@@ -123,9 +123,9 @@ export const certificates: Certificate[] = [
     description: 'Certificate of completion for the AI course program.',
     skills: ['Artificial Intelligence'],
     icon: '🤖',
-    imageSrc: '/src/assets/certificates/samsung-innovation-campus-ai.png',
+    imageSrc: '/certificates/samsung-innovation-campus-ai.png',
     logos: [
-      { src: '/src/assets/certificates/logos/samsung.png', alt: 'Samsung' }
+      { src: '/certificates/logos/samsung.png', alt: 'Samsung' }
     ]
   }
 ];

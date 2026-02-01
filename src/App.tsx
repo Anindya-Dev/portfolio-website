@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Github, Linkedin, Mail, Code, Briefcase, User, Download, Facebook, Twitter } from 'lucide-react';
 import profileImage from './assets/profile.jpg';
+import aboutImage from './assets/about.png';
 import { certificates, type Certificate } from './data/certificates';
 
 function App() {
@@ -41,15 +42,15 @@ function App() {
     { name: 'Flask', iconUrl: 'https://cdn.simpleicons.org/flask/000000' },
     { name: 'NumPy', iconUrl: 'https://cdn.simpleicons.org/numpy/013243' },
     { name: 'Pandas', iconUrl: 'https://cdn.simpleicons.org/pandas/150458' },
-    { name: 'Matplotlib', iconUrl: 'https://cdn.simpleicons.org/matplotlib/11557C' },
-    { name: 'Excel', iconUrl: 'https://cdn.simpleicons.org/microsoftexcel/217346' },
+    { name: 'Matplotlib', iconUrl: '/certificates/logos/matplotlib.png' },
+    { name: 'Excel', iconUrl: 'https://api.iconify.design/simple-icons:microsoftexcel.svg?color=%23217346' },
     { name: 'Scikit-learn', iconUrl: 'https://cdn.simpleicons.org/scikitlearn/F7931E' },
     { name: 'Git', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg' },
     { name: 'GitHub', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg' },
     { name: 'VS Code', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg' },
     { name: 'Docker', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
     { name: 'Jupyter', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jupyter/jupyter-original.svg' },
-    { name: 'Prompt Engineering', iconUrl: 'https://cdn.simpleicons.org/openai/412991' }
+    { name: 'Prompt Engineering', iconUrl: '/certificates/logos/prompt-engineering.png' }
   ];
 
   const techCategories = [
@@ -84,8 +85,8 @@ function App() {
       items: [
         { name: 'NumPy', iconUrl: 'https://cdn.simpleicons.org/numpy/013243' },
         { name: 'Pandas', iconUrl: 'https://cdn.simpleicons.org/pandas/150458' },
-        { name: 'Matplotlib', iconUrl: 'https://cdn.simpleicons.org/matplotlib/11557C' },
-        { name: 'Excel', iconUrl: 'https://cdn.simpleicons.org/microsoftexcel/217346' },
+        { name: 'Matplotlib', iconUrl: '/certificates/logos/matplotlib.png' },
+        { name: 'Excel', iconUrl: 'https://api.iconify.design/simple-icons:microsoftexcel.svg?color=%23217346' },
         { name: 'Scikit-learn', iconUrl: 'https://cdn.simpleicons.org/scikitlearn/F7931E' }
       ]
     },
@@ -104,7 +105,7 @@ function App() {
       title: 'AI Skills',
       subtitle: 'Applied AI',
       items: [
-        { name: 'Prompt Engineering', iconUrl: 'https://cdn.simpleicons.org/openai/412991' }
+        { name: 'Prompt Engineering', iconUrl: '/certificates/logos/prompt-engineering.png' }
       ]
     }
   ];
@@ -238,6 +239,7 @@ function App() {
   const [isShowcasePlaying, setIsShowcasePlaying] = useState(true);
   const [showcaseProgress, setShowcaseProgress] = useState(0);
   const [activeCertificate, setActiveCertificate] = useState<Certificate | null>(null);
+  const [certificateImageError, setCertificateImageError] = useState(false);
 
   useEffect(() => {
     if (showcases.length <= 1 || !isShowcasePlaying) return;
@@ -263,6 +265,10 @@ function App() {
     return () => cancelAnimationFrame(frame);
   }, [activeShowcase, isShowcasePlaying, showcases.length]);
 
+  useEffect(() => {
+    setCertificateImageError(false);
+  }, [activeCertificate]);
+
   return (
     <div className="min-h-screen bg-white text-gray-900 relative overflow-hidden">
       <div className="page-bg">
@@ -278,7 +284,7 @@ function App() {
             <span className="text-xl font-bold brand-mark">AB</span>
             
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#about" className="nav-link">Home</a>
+              <a href="#home" className="nav-link">Home</a>
               <a href="#about" className="nav-link">About</a>
               <a href="#projects" className="nav-link">Projects</a>
               <a href="#techstack" className="nav-link">Tech Stack</a>
@@ -306,7 +312,7 @@ function App() {
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t border-gray-100">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              <a href="#about" className="block px-3 py-2 text-gray-600 hover:text-gray-900">Home</a>
+              <a href="#home" className="block px-3 py-2 text-gray-600 hover:text-gray-900">Home</a>
               <a href="#about" className="block px-3 py-2 text-gray-600 hover:text-gray-900">About</a>
               <a href="#projects" className="block px-3 py-2 text-gray-600 hover:text-gray-900">Projects</a>
               <a href="#techstack" className="block px-3 py-2 text-gray-600 hover:text-gray-900">Tech Stack</a>
@@ -319,7 +325,7 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-24 px-4 sm:px-6 lg:px-8">
+      <section id="home" className="pt-32 pb-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-10">
@@ -344,9 +350,8 @@ function App() {
               </div>
 
               <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
-                I’m a BTech CSE (AI/ML) student at Brainware University, currently in my third year. I’m focused on
-                learning and building in the field of artificial intelligence and machine learning, with an interest
-                in applying these concepts to real-world problems.
+                Building intelligent systems through machine learning and computer vision, with a focus on practical,
+                real-world applications.
               </p>
 
               <div className="flex flex-wrap gap-4">
@@ -426,17 +431,35 @@ function App() {
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="animate-on-scroll">
               <img 
-                src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                alt="Workspace"
-                className="rounded-lg shadow-lg"
+                src={aboutImage}
+                alt="About portrait"
+                className="rounded-2xl shadow-xl"
               />
             </div>
             <div className="space-y-6 animate-on-scroll delay-200">
-              <p className="text-gray-600 text-lg leading-relaxed">
-                I’m a BTech CSE (AI/ML) student at Brainware University, currently in my third year. I’m focused on
-                learning and building in the field of artificial intelligence and machine learning, with an interest
-                in applying these concepts to real-world problems.
+              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white text-gray-700 text-sm font-medium shadow-sm">
+                <span className="inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                Third-year BTech CSE (AI/ML) student
+              </div>
+              <p className="text-gray-700 text-lg leading-relaxed">
+                I’m a BTech CSE (AI/ML) student at Brainware University, currently in my third year. My academic focus
+                is on artificial intelligence and machine learning, where I work on understanding core concepts and
+                applying them to practical problem-solving scenarios.
               </p>
+              <p className="text-gray-600 text-base leading-relaxed">
+                I build clean, testable prototypes and iterate with feedback, aiming for solutions that are practical,
+                explainable, and ready for real-world use.
+              </p>
+              <div className="grid gap-3 sm:grid-cols-2">
+                <div className="info-card">
+                  <p className="text-xs uppercase tracking-wide text-gray-400">Current Focus</p>
+                  <p className="text-sm font-semibold text-gray-900">Machine learning + CV</p>
+                </div>
+                <div className="info-card">
+                  <p className="text-xs uppercase tracking-wide text-gray-400">Working Style</p>
+                  <p className="text-sm font-semibold text-gray-900">Structured & reproducible</p>
+                </div>
+              </div>
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="info-card">
                   <p className="text-sm text-gray-500">University</p>
@@ -462,6 +485,8 @@ function App() {
               </div>
               <a 
                 href="/resume.pdf" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium shadow-md hover:shadow-lg"
               >
                 <Download size={20} className="mr-2" />
@@ -715,9 +740,7 @@ function App() {
                         />
                       ))}
                     </div>
-                  ) : (
-                    <div className="text-4xl">{cert.icon}</div>
-                  )}
+                  ) : null}
                   <div className="flex-1">
                     <h3 className="text-xl font-medium mb-2 text-gray-900 leading-tight">{cert.title}</h3>
                     <div className="flex items-center text-gray-600 mb-3">
@@ -781,12 +804,19 @@ function App() {
               </button>
             </div>
             <div className="bg-gray-50">
-              <img
-                src={activeCertificate.imageSrc}
-                alt={`${activeCertificate.title} certificate`}
-                className="w-full h-auto object-contain"
-                loading="lazy"
-              />
+              {certificateImageError ? (
+                <div className="px-6 py-10 text-center text-gray-600">
+                  Certificate image not found. Please check the file path.
+                </div>
+              ) : (
+                <img
+                  src={activeCertificate.imageSrc}
+                  alt={`${activeCertificate.title} certificate`}
+                  className="w-full h-auto object-contain"
+                  loading="lazy"
+                  onError={() => setCertificateImageError(true)}
+                />
+              )}
             </div>
           </div>
         </div>

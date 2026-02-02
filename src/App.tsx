@@ -1,11 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin, Mail, Code, Briefcase, User, Download, Facebook, Twitter } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Mail, Code, Briefcase, User, Download, Facebook, Twitter, Sun, Moon } from 'lucide-react';
 import profileImage from './assets/profile.jpg';
 import aboutImage from './assets/about.png';
 import { certificates, type Certificate } from './data/certificates';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    const stored = localStorage.getItem('theme');
+    if (stored) return stored === 'dark';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', isDarkMode);
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+  }, [isDarkMode]);
+
 
   useEffect(() => {
     // Scroll animation observer
@@ -45,6 +57,7 @@ function App() {
     { name: 'Matplotlib', iconUrl: '/certificates/logos/matplotlib.png' },
     { name: 'Excel', iconUrl: 'https://api.iconify.design/simple-icons:microsoftexcel.svg?color=%23217346' },
     { name: 'Scikit-learn', iconUrl: 'https://cdn.simpleicons.org/scikitlearn/F7931E' },
+    { name: 'OpenCV', iconUrl: 'https://cdn.simpleicons.org/opencv/5C3EE8' },
     { name: 'Git', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg' },
     { name: 'GitHub', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg' },
     { name: 'VS Code', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg' },
@@ -105,7 +118,8 @@ function App() {
       title: 'AI Skills',
       subtitle: 'Applied AI',
       items: [
-        { name: 'Prompt Engineering', iconUrl: '/certificates/logos/prompt-engineering.png' }
+        { name: 'Prompt Engineering', iconUrl: '/certificates/logos/prompt-engineering.png' },
+        { name: 'OpenCV', iconUrl: 'https://cdn.simpleicons.org/opencv/5C3EE8' }
       ]
     }
   ];
@@ -130,40 +144,64 @@ function App() {
 
   const projects = [
     {
-      title: 'AI Market Signals',
-      description: 'ML-driven signal generation for financial time-series with a focus on robustness and explainability.',
-      tags: ['Python', 'ML', 'Finance'],
+      title: 'Parking Slot Identification',
+      description: 'Computer vision–based parking analysis using object detection for occupancy tracking.',
+      tags: ['Python', 'YOLO v11n', 'Computer Vision'],
       caseStudy: {
-        problem: 'Interpreting noisy financial data to extract meaningful signals.',
-        approach: 'Built an ML pipeline with feature engineering, model training, and evaluation loops.',
-        outcome: 'Produced a working prototype with explainable signal outputs.'
+        problem: 'Identifying occupied and available parking slots manually is inefficient at scale.',
+        approach: 'Applied a YOLO v11n object detection model (VisDrone-based) to analyze video frames and detect parking slot occupancy.',
+        outcome: 'Built a vision-based system that reliably identifies parking availability from visual data.'
       },
-      imageSrc: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1200&q=80',
-      href: 'https://github.com/Anindya-Dev'
+      imageSrc: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1200&q=80',
+      href: 'https://github.com/Anindya-Dev/Galaxy-Geeks'
     },
     {
-      title: 'Portfolio Analytics Dashboard',
-      description: 'Interactive dashboard for performance attribution, risk metrics, and allocation insights.',
-      tags: ['React', 'TypeScript', 'DataViz'],
+      title: 'House Price Prediction',
+      description: 'Predictive modeling on structured housing data with regression techniques.',
+      tags: ['Python', 'Linear Regression', 'Data Analysis'],
       caseStudy: {
-        problem: 'Consolidating portfolio insights into a single, readable view.',
-        approach: 'Designed a component-based UI with reusable charts and filters.',
-        outcome: 'Created a clean dashboard for exploring performance and risk.'
+        problem: 'House prices vary due to multiple interacting factors, making estimation non-trivial.',
+        approach: 'Used data preprocessing and feature engineering followed by Linear Regression to model price relationships.',
+        outcome: 'Developed a regression model capable of predicting house prices from structured input data.'
       },
-      imageSrc: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80',
-      href: 'https://github.com/Anindya-Dev'
+      imageSrc: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80',
+      href: 'https://github.com/Anindya-Dev/House_Price_Prediction'
     },
     {
-      title: 'Automated Strategy Backtester',
-      description: 'Backtesting framework with configurable strategies, transaction costs, and reporting.',
-      tags: ['Node.js', 'Backtesting', 'Quant'],
+      title: 'Customer Segmentation System',
+      description: 'Unsupervised clustering to segment customer behavior patterns.',
+      tags: ['Python', 'K-Means', 'Unsupervised Learning'],
       caseStudy: {
-        problem: 'Evaluating strategies consistently before deployment.',
-        approach: 'Implemented a rule-driven backtesting engine with report outputs.',
-        outcome: 'Delivered reproducible backtest results for experimentation.'
+        problem: 'Understanding customer behavior is difficult without clear grouping patterns.',
+        approach: 'Applied K-Means clustering on cleaned and normalized customer data to identify distinct segments.',
+        outcome: 'Generated meaningful customer groups for analysis and data-driven decision-making.'
       },
-      imageSrc: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80',
-      href: 'https://github.com/Anindya-Dev'
+      imageSrc: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
+      href: 'https://github.com/Anindya-Dev/Customer_segmentation_system'
+    },
+    {
+      title: 'Hand Gesture Identification',
+      description: 'CNN-based gesture recognition using grayscale image inputs.',
+      tags: ['Python', 'CNN', 'Computer Vision'],
+      caseStudy: {
+        problem: 'Hand gesture recognition is sensitive to noise, lighting, and background variations.',
+        approach: 'Trained a CNN on grayscale hand gesture images to learn spatial features for classification.',
+        outcome: 'Built a gesture recognition model capable of classifying gestures from image inputs.'
+      },
+      imageSrc: 'https://images.unsplash.com/photo-1504257432389-52343af06ae3?auto=format&fit=crop&w=1200&q=80',
+      href: 'https://github.com/Anindya-Dev/Hand_Gesture_Recognition_System'
+    },
+    {
+      title: 'Cat–Dog Image Classifier',
+      description: 'Image classification pipeline using SVM for robust feature separation.',
+      tags: ['Python', 'SVM', 'Machine Learning'],
+      caseStudy: {
+        problem: 'Image classification requires robust feature separation between visually similar classes.',
+        approach: 'Extracted image features and trained an SVM classifier to distinguish between cats and dogs.',
+        outcome: 'Developed an image classification system that correctly classifies unseen images.'
+      },
+      imageSrc: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=1200&q=80',
+      href: 'https://github.com/Anindya-Dev/cat_vs_dogs_classifier'
     }
   ];
 
@@ -177,7 +215,7 @@ function App() {
         'Parking slot detection logic',
         'Occupancy status identification'
       ],
-      tech: ['Python', 'OpenCV', 'Computer Vision'],
+      tech: ['Python', 'YOLO', 'OpenCV', 'Computer Vision'],
       imageSrc: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1400&q=80',
       href: 'https://github.com/Anindya-Dev/Galaxy-Geeks'
     },
@@ -190,7 +228,7 @@ function App() {
         'Regression model training',
         'Price prediction analysis'
       ],
-      tech: ['Python', 'Regression', 'Data Analysis'],
+      tech: ['Python', 'Linear Regression', 'Data Analysis'],
       imageSrc: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1400&q=80',
       href: 'https://github.com/Anindya-Dev/House_Price_Prediction'
     },
@@ -200,10 +238,10 @@ function App() {
       description: 'Applied clustering techniques to group customers based on behavioral patterns and attributes.',
       features: [
         'Exploratory data analysis',
-        'Clustering using unsupervised algorithms',
+        'K-Means clustering on normalized data',
         'Visualization of customer segments'
       ],
-      tech: ['Python', 'Clustering', 'Machine Learning'],
+      tech: ['Python', 'K-Means Clustering', 'Machine Learning'],
       imageSrc: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80',
       href: 'https://github.com/Anindya-Dev/Customer_segmentation_system'
     },
@@ -229,7 +267,7 @@ function App() {
         'CNN-based classification model',
         'Performance evaluation on unseen data'
       ],
-      tech: ['Python', 'CNN', 'Computer Vision'],
+      tech: ['Python', 'SVM', 'Machine Learning'],
       imageSrc: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=1400&q=80',
       href: 'https://github.com/Anindya-Dev/cat_vs_dogs_classifier'
     }
@@ -286,18 +324,19 @@ function App() {
             <div className="hidden md:flex items-center space-x-8">
               <a href="#home" className="nav-link">Home</a>
               <a href="#about" className="nav-link">About</a>
-              <a href="#projects" className="nav-link">Projects</a>
               <a href="#techstack" className="nav-link">Tech Stack</a>
-              <a href="#skills" className="nav-link">Skills</a>
+              <a href="#projects" className="nav-link">Featured Projects</a>
               <a href="#certificates" className="nav-link">Certifications</a>
               <a href="#contact" className="nav-link">Contact</a>
             </div>
 
             <div className="flex items-center space-x-4">
-              <button className="p-2 text-gray-600 hover:text-gray-900 transition-colors">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                </svg>
+              <button
+                className="p-2 text-gray-600 hover:text-gray-900 transition-colors"
+                onClick={() => setIsDarkMode((prev) => !prev)}
+                aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+              >
+                {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
               </button>
               <button 
                 className="md:hidden text-gray-600 hover:text-gray-900"
@@ -314,9 +353,8 @@ function App() {
             <div className="px-2 pt-2 pb-3 space-y-1">
               <a href="#home" className="block px-3 py-2 text-gray-600 hover:text-gray-900">Home</a>
               <a href="#about" className="block px-3 py-2 text-gray-600 hover:text-gray-900">About</a>
-              <a href="#projects" className="block px-3 py-2 text-gray-600 hover:text-gray-900">Projects</a>
               <a href="#techstack" className="block px-3 py-2 text-gray-600 hover:text-gray-900">Tech Stack</a>
-              <a href="#skills" className="block px-3 py-2 text-gray-600 hover:text-gray-900">Skills</a>
+              <a href="#projects" className="block px-3 py-2 text-gray-600 hover:text-gray-900">Featured Projects</a>
               <a href="#certificates" className="block px-3 py-2 text-gray-600 hover:text-gray-900">Certifications</a>
               <a href="#contact" className="block px-3 py-2 text-gray-600 hover:text-gray-900">Contact</a>
             </div>
@@ -356,7 +394,6 @@ function App() {
 
               <div className="flex flex-wrap gap-4">
                 <a href="#projects" className="btn-primary">View Projects</a>
-                <a href="#contact" className="btn-secondary">Book a call</a>
               </div>
 
               <div className="grid grid-cols-3 gap-4 max-w-lg">
@@ -667,9 +704,13 @@ function App() {
             <div className="accent-line"></div>
             <p className="text-gray-600 text-lg">Problem → Approach → Outcome, summarized</p>
           </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project) => (
-              <div key={project.title} className="case-card hover-lift">
+          <div className="case-grid grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {projects.map((project, index) => (
+              <div
+                key={project.title}
+                className="case-card animate-on-scroll"
+                style={{ transitionDelay: `${index * 120}ms` }}
+              >
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-lg font-semibold text-gray-900">{project.title}</h3>
                   <a

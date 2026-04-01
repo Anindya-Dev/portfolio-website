@@ -1,6 +1,6 @@
 # Portfolio Website
 
-Personal portfolio built with Vite, React, TypeScript, and Tailwind CSS. It highlights projects, certificates, and skills in a fast, responsive UI.
+Personal portfolio vibecoded with Vite, React, TypeScript, and Tailwind CSS. It highlights projects, certificates, and skills in a fast, responsive UI.
 
 ## Tech Stack
 - Vite + React 18

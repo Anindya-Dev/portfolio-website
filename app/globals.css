@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    background-color: #0C0C0C;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: #D7E2EA;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .hero-heading {
+    background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .accent-gradient {
+    background: linear-gradient(135deg, #7C5CFF 0%, #4FE3C1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  ::selection {
+    background: rgba(124, 92, 255, 0.35);
+    color: #F2F2F0;
+  }
+}
+

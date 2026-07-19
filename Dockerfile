@@ -1,5 +1,4 @@
-# Use Node.js 18.19.0 Alpine for smaller image size
-FROM node:18.19.0-alpine
+FROM node:20-alpine
 
 # Set working directory
 WORKDIR /app
@@ -13,8 +12,8 @@ RUN npm ci
 # Copy source code
 COPY . .
 
-# Expose port 5173 (Vite default)
-EXPOSE 5173
+# Expose port 3000 (Next.js default)
+EXPOSE 3000
 
 # Start development server
-CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+CMD ["npm", "run", "dev", "--", "--hostname", "0.0.0.0"]

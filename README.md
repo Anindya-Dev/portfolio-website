@@ -1,18 +1,21 @@
 # Portfolio Website
 
-Personal portfolio vibecoded with Vite, React, TypeScript, and Tailwind CSS. It highlights projects, certificates, and skills in a fast, responsive UI.
+Personal portfolio built with Next.js, React, TypeScript, and Tailwind CSS. It highlights projects, certifications, skills, and contact links in a responsive UI.
 
 ## Tech Stack
-- Vite + React 18
+- Next.js 14 + React 18
 - TypeScript
-- Tailwind CSS + PostCSS
-- ESLint
+- Tailwind CSS
+- Framer Motion
 
 ## Project Structure
-- src/ - app source
-- src/components/ - UI components (e.g., `ProjectCard`)
-- src/data/ - data sources (e.g., certificates)
-- public/ - static assets
+- `app/` - app routes, sections, components, and data
+- `public/` - static assets, resume, images, and certificate files
+
+## Scripts
+- `npm run dev` - start the local development server
+- `npm run build` - build the production site
+- `npm run start` - run the production server after building
   
 ## License
 MIT
